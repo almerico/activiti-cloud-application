@@ -3,6 +3,7 @@ import: Activiti/activiti-scripts:.travis.java.yml@master
 branches:
   only:
     - master
+    - develop
     - /*M*/
 env:
   global:
