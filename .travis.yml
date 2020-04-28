@@ -3,6 +3,7 @@ import: Activiti/activiti-scripts:.travis.java.yml@master
 branches:
   only:
     - master
+    - develop
     - /*M*/
 env:
   global:
@@ -34,7 +35,7 @@ stages:
 - name: tag
   if: type != pull_request
 
-install: false
+install: true
 
 jobs:
   include:
@@ -93,4 +94,3 @@ after_success:
 before_install:
   - echo -e "https://$GITHUB_USER:$GITHUB_TOKEN@github.com" >>  ~/.git-credentials
   - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY"
-  - curl -sSL https://download.sourceclear.com/ci.sh | CACHE_DIR=${HOME}/sourceclear
