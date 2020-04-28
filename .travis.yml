@@ -34,7 +34,7 @@ stages:
 - name: tag
   if: type != pull_request
 
-install: false
+install: true
 
 jobs:
   include:
