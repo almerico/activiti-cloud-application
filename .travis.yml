@@ -4,7 +4,7 @@ branches:
   only:
     - master
     - develop
-    - /*M*/
+    - /^\d+\.\d+\.\d+.*M*$/
 env:
   global:
     - ORG='activiti'
