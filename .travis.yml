@@ -17,8 +17,6 @@ env:
     - HELM_REPO=stable
     - KUBERNETES_VERSION=1.14.8
     - TRAVIS_WAIT_TIMEOUT=${TRAVIS_WAIT_TIMEOUT:-180}
-
-
 before_script:
   - export PREVIEW_NAMESPACE1=$(echo "$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER"|  tr '[:upper:]' '[:lower:]'|tr . -)
   - if [[ branch == "develop" ]]; then echo "1.1.1" > VERSION1; else echo "$PREVIEW_NAMESPACE1"> VERSION1;  fi
