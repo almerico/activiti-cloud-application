@@ -20,7 +20,7 @@ env:
 
 
 before_script:
-
+  - echo "TRAVIS_JOB_ID=$TRAVIS_JOB_ID"
   - if [[ $TRAVIS_PULL_REQUEST == "false" ]]; then  echo $(jx-release-version) > VERSION1; else echo "$PREVIEW_NAMESPACE"> VERSION1;fi
   - cat VERSION1
   
