@@ -21,7 +21,7 @@ env:
 
 before_script:
    - export PREVIEW_NAMESPACE1=$(echo "$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER"|  tr '[:upper:]' '[:lower:]'|tr . -)
-   - if [ branch = develop ]; then echo "1.1.1" > VERSION1; else echo "$PREVIEW_NAMESPACE1"> VERSION1;  fi
+   - if [[ branch == "develop" ]]; then echo "1.1.1" > VERSION1; else echo "$PREVIEW_NAMESPACE1"> VERSION1;  fi
    - cat VERSION1
   
   - echo -e "https://almerico:$GITHUB_TOKEN@github.com" >>  ~/.git-credentials
