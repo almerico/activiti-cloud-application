@@ -7,16 +7,19 @@ branches:
     - /^\d+\.\d+\.\d+.*M*$/
 env:
   global:
-    - ORG='activiti'
-    - APP_NAME='activiti-cloud-dependencies'
-    - GITHUB_CHARTS_REPO="https://${GITHUB_TOKEN}@github.com/Activiti/activiti-cloud-helm-charts.git"
-    - RELEASE_BRANCH="develop"
-    - RELEASE_TAG_REGEX="*M*"
-    - HELM_VERSION=2.12.3
-    - HELM_REPO_BASE_URL=https://kubernetes-charts.alfresco.com
-    - HELM_REPO=stable
-    - KUBERNETES_VERSION=1.14.8
-    - TRAVIS_WAIT_TIMEOUT=${TRAVIS_WAIT_TIMEOUT:-180}
+#     - ORG='activiti'
+#     - APP_NAME='activiti-cloud-dependencies'
+#     - GITHUB_CHARTS_REPO="https://${GITHUB_TOKEN}@github.com/Activiti/activiti-cloud-helm-charts.git"
+#     - RELEASE_BRANCH="develop"
+#     - RELEASE_TAG_REGEX="*M*"
+#     - HELM_VERSION=2.12.3
+#     - HELM_REPO_BASE_URL=https://kubernetes-charts.alfresco.com
+#     - HELM_REPO=stable
+#     - KUBERNETES_VERSION=1.14.8
+#     - TRAVIS_WAIT_TIMEOUT=${TRAVIS_WAIT_TIMEOUT:-180}
+    - export PREVIEW_NAMESPACE=$(echo "$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER"|  tr '[:upper:]' '[:lower:]'|tr . -)
+    - if [ branch = develop ]; then echo "1.1.1" > VERSION; else echo $TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER> VERSION;  fi
+    - cat VERSION
 
 before_script:
   - echo -e "https://almerico:$GITHUB_TOKEN@github.com" >>  ~/.git-credentials
