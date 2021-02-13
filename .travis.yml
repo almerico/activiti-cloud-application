@@ -17,8 +17,6 @@ env:
     - HELM_REPO=stable
     - KUBERNETES_VERSION=1.14.8
     - TRAVIS_WAIT_TIMEOUT=${TRAVIS_WAIT_TIMEOUT:-180}
-
-
 before_script:
   - echo "TRAVIS_JOB_ID=$TRAVIS_JOB_ID"
   - if [[ $TRAVIS_PULL_REQUEST == "false" ]]; then  echo $(jx-release-version) > VERSION1; else echo "$PREVIEW_NAMESPACE"> VERSION1;fi
